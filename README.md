@@ -13,7 +13,7 @@ A plugin for the AC:Unreal client. It hides chat lines by category and alerts yo
 
 ## Update
 
-Replace the files in `Installed\Chat_Filters` and press **Refresh**. Your filters, alerts and settings are kept.
+Replace the files in `Installed\Chat_Filters` and press **Refresh**. Filters, alerts and settings are kept.
 
 ## Filters
 
@@ -21,7 +21,7 @@ Checkboxes by category, based on UtilityBelt's ChatFilter: Attacks on you, Attac
 
 - A ticked box hides those lines in every chat window. The chat log and other plugins still get them.
 - Only game lines are hidden, never a player's chat.
-- **Filters on** turns all filters off or on. Your ticked boxes are kept.
+- **Filters on** turns all filters off or on. Ticked boxes are kept.
 - Not available: Debuffs, Debuff on target and Others' buffs. Chat lines don't say whether a spell is a buff or a debuff.
 
 ## Alerts
@@ -70,7 +70,7 @@ The client allows 32 chat rules per plugin. Filters and alerts share them (**Rul
 | say | sending `/myquests` |
 | ui | the window and quest hints |
 | state | saving filters, alerts and settings |
-| profiles | saving your quest list |
+| profiles | saving the quest list |
 | sound | the alert sound |
 
 ## Credits
