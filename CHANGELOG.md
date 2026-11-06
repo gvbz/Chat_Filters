@@ -1,6 +1,6 @@
 # Changelog
 
-## 2.0.5
+## 2.0.6
 
 Needs AC:Unreal client v146 or newer.
 
@@ -12,6 +12,7 @@ Needs AC:Unreal client v146 or newer.
 - Quest flag is a search box.
 - Alert buttons: C (Chat), E (Edit), X (Remove).
 - The starting quest alerts are off.
+- Setting: Read quest list at login (off by default).
 - New filters: Death messages, NPC tells and Vendor tells.
 - Every filter box can be ticked at once.
 - Filters on and Alerts on switches.

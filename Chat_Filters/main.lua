@@ -1,4 +1,4 @@
--- Chat Filters 2.0.5 (AC:Unreal API 2 companion, client v146 or newer).
+-- Chat Filters 2.0.6 (AC:Unreal API 2 companion, client v146 or newer).
 --
 -- Three tabs:
 --   Filters: checkboxes by category, based on UtilityBelt's ChatFilter. Ticked
@@ -145,11 +145,11 @@ for k, tip in pairs(TIPS) do ITEM[k].tip = tip end
 
 -- Conquest custom quests (Oracle of Dereth customquests.csv, by Advis).
 local BASE = {
-  {n = "Darshmaul the Brutal", f = "assaultonaimaru", h = "Shoushi - Portal to Fort 33.6S 74.9E - Kill Darshmaul the Brutal 34.3S 80.7E - Loot Finger - Shoushi - Give to Vovran 33.4S 72.8E"},
-  {n = "Forgotten One", f = "ghostdencompleted", h = "Desolution Beach - Helsing 82.5N 43.5W - Den of Ghosts 82.4N 41.3W - Head North and hug left. Don't go downstairs - Defeat The Forgotten One and Loot Head - Back to Helsing"},
-  {n = "Ice Giants Kill Task", f = "icegiantkilltask", h = "ENL 3+ Abandoned Mines - /tell Subway \"ice\" and take portal - Speak to Bjorn Sjostrom 95.0N 57.0W"},
+  {n = "darsh down", f = "assaultonaimaru", h = "Shoushi - Portal to Fort 33.6S 74.9E - Kill Darshmaul the Brutal 34.3S 80.7E - Loot Finger - Shoushi - Give to Vovran 33.4S 72.8E"},
+  {n = "FO down", f = "ghostdencompleted", h = "Desolution Beach - Helsing 82.5N 43.5W - Den of Ghosts 82.4N 41.3W - Head North and hug left. Don't go downstairs - Defeat The Forgotten One and Loot Head - Back to Helsing"},
+  {n = "Ice Giants", f = "icegiantkilltask", h = "ENL 3+ Abandoned Mines - /tell Subway \"ice\" and take portal - Speak to Bjorn Sjostrom 95.0N 57.0W"},
   {n = "Tenebrous Subversion", f = "shadowqueensspike", h = "ENL 8+ 14 players max. Flag: Zhaikhal - Zahar 13.4N 0.5E - Tou-Tou 28.2S 96.0E - Kill Teneberous Shadows loot Tenebrous Synaptic Core Matrix - Give to Zahar. Repeat: Timaru - Astral Projection 51.2N 76.1W"},
-  {n = "Thorsten's Tears", f = "cragstonetearspickup", h = "ENL 2+ 14 players max. Abandoned Mines - Bottom before big jump - Buy Cragstone Farms Portal Gem 20.1N 43.6E - Thomas the Squire 19.1N 46.3E - Cragstone - Alter to Cragstone 26.0N 48.4E - The Knight's Hold 34.6N 41.6E"},
+  {n = "Thorsten Tears", f = "cragstonetearspickup", h = "ENL 2+ 14 players max. Abandoned Mines - Bottom before big jump - Buy Cragstone Farms Portal Gem 20.1N 43.6E - Thomas the Squire 19.1N 46.3E - Cragstone - Alter to Cragstone 26.0N 48.4E - The Knight's Hold 34.6N 41.6E"},
   {n = "Uber Bellas", f = "bellasprimaryrewardclaimed", h = "ENL 2+ 6 players max. Hebian-To - Ambassador Fehyin 39.0S 83.0E - 1 player turn in Eaters jaw - Augmentation Realm - Lowest Level 39.0S 83.0E"},
   {n = "Uber Bobo", f = "uberpawlooted", h = "ENL 2+ 14 players max. Abandoned Mines - South passage - Legend of Tusker King - All Lefts - Throne of Tusker King - Talk to Jhango, The Second Prince - Take Uber Tusker Arena - Kill Bobo"},
   {n = "Uber Curator", f = "uberrtwreward", h = "ENL 2+ Rynthid Camp 61.6S 63.2W - 1 player kill 4 sanctum wardning crystals - Fargus 61.6S 63.2W"},
@@ -157,12 +157,17 @@ local BASE = {
   {n = "Uber Metos 1", f = "ubermetossiralfricprimary", h = "ENL 5+ 9 players max. Dungeon: Graveyard - 61.3S 46.6W Rewards NPC: Graveyard - 64.4S 45.8W"},
   {n = "Uber Metos 2", f = "ubermetossrandprimary", h = "ENL 5+ 9 players max. Dungeon: Graveyard - 61.3S 46.6W Rewards NPC: Graveyard - 64.4S 45.8W"},
   {n = "Uber Slave Master", f = "uberslavemasterprimaryrewardclaimed", h = "ENL 4+ 6 players max. Neftet - Katsat 20.6S 7.9E - 1 player turn in Engraved A'nekshay Bracers - Temple Rear Entrance 20.6S 7.9E"},
-  {n = "World Boss: Leafcull", f = "lceventcompleted", h = "Qalabar - Villalabar 74.9S 17.8E - Old Lugian Fortification 57.8S 18.0E. Reward: Khayyaban - Brigand Sands Cottage Portal 49.3S 26.0E - Highguard Wa Shi 63.7S 26.2E"},
-  {n = "World Boss: Wintersebb", f = "weeventcompleted", h = "Crater Village - Mountain Retreat Cottages 66.1N 14.1E - Up mountain 56.5N 4.1W - Wintersebb 55.1N 3.5W. Reward: Mountain Retreat 59.8N 4.2W"},
+  {n = "Leafcull", f = "lceventcompleted", h = "Qalabar - Villalabar 74.9S 17.8E - Old Lugian Fortification 57.8S 18.0E. Reward: Khayyaban - Brigand Sands Cottage Portal 49.3S 26.0E - Highguard Wa Shi 63.7S 26.2E"},
+  {n = "Wintersebb", f = "weeventcompleted", h = "Crater Village - Mountain Retreat Cottages 66.1N 14.1E - Up mountain 56.5N 4.1W - Wintersebb 55.1N 3.5W. Reward: Mountain Retreat 59.8N 4.2W"},
 }
 local HINT = {}   -- flag -> hint
+-- Starting alert names by flag, also the names used before 2.0.6 (for the 2.0.2 update).
 local BASE_BY_FLAG = {}
-for _, b in ipairs(BASE) do HINT[b.f] = b.h; BASE_BY_FLAG[b.f] = string.lower(b.n) end
+for _, b in ipairs(BASE) do HINT[b.f] = b.h; BASE_BY_FLAG[b.f] = {[string.lower(b.n)] = true} end
+for f, n in pairs({assaultonaimaru = "darshmaul the brutal", ghostdencompleted = "forgotten one", icegiantkilltask = "ice giants kill task",
+  cragstonetearspickup = "thorsten's tears", lceventcompleted = "world boss: leafcull", weeventcompleted = "world boss: wintersebb"}) do
+  BASE_BY_FLAG[f][n] = true
+end
 
 local WINDOWS = {"Main chat", "Window 1", "Window 2", "Window 3", "Window 4"}
 -- Alert channels (client message types): General 27, Tells 3, Allegiance 18 and
@@ -213,6 +218,7 @@ local ui_key, rule_sig, sub_sig = nil, nil, nil
 local rule_check, sub_check = nil, nil   -- when to look at the rules and subscriptions again
 local reqs, req_serial = {}, 0
 local myq_sent_at, myq_hide_until = -1e9, -1e9
+local login_at, login_done = nil, false   -- Read quest list at login
 local qpend, qhead = {}, 1     -- quest rows waiting to be read
 
 -- Quest list (from /myquests replies in chat)
@@ -581,6 +587,8 @@ local function build(unix, used)
       tooltip = "Plays the alert sound when a line matches, at most once per alert every 5 seconds"},
     {id = "a_vol", type = "slider", size = SIZE, text = "Volume", min = 10, max = 100, step = 10, value = tonumber(opt("vol")) or 100,
       tooltip = "Volume of the alert sound"},
+    {id = "opt|login", type = "checkbox", size = SIZE, text = "Read quest list at login", value = opt("login_read") == true, wrap = false,
+      tooltip = "Sends /myquests after logging in"},
     {id = "a_used", type = "text", size = SMALL, text = used_text, color = full and "red" or nil, wrap = false, tooltip = used_tip}}}
 
   local pages = math.max(1, math.ceil(#st.alerts / PAGE))
@@ -643,6 +651,7 @@ local function handle(e, unix)
     elseif id == "opt|filters" then st.opt.filters_off = e.value ~= true or nil; dirty = true
     elseif id == "opt|alerts" then st.opt.alerts_off = e.value ~= true or nil; dirty = true
     elseif id == "opt|sound" then st.opt.sound_off = e.value ~= true or nil; dirty = true
+    elseif id == "opt|login" then st.opt.login_read = e.value == true or nil; dirty = true
     elseif id == "a_color" then st.opt.color = COLOR[tostring(e.value or "")] and tostring(e.value) or nil; dirty = true
     elseif id == "a_target" then st.opt.win = WIN_N[tostring(e.value or "")] and tostring(e.value) or nil; dirty = true
     elseif id == "a_vol" then st.opt.vol = math.max(10, math.min(100, math.floor((tonumber(e.value) or 100) + 0.5))); dirty = true
@@ -777,7 +786,7 @@ return function(s, p)
     local saved = type(s.state) == "table" and s.state or {}
     st = {filters = {}, alerts = {}, opt = {}}
     local o = type(saved.opt) == "table" and saved.opt or {}
-    for _, k in ipairs({"filters_off", "alerts_off", "sound_off"}) do if o[k] == true then st.opt[k] = true end end
+    for _, k in ipairs({"filters_off", "alerts_off", "sound_off", "login_read"}) do if o[k] == true then st.opt[k] = true end end
     if COLOR[o.color or ""] then st.opt.color = o.color end
     if WIN_N[o.win or ""] then st.opt.win = o.win end
     if tonumber(o.vol) then st.opt.vol = math.max(10, math.min(100, math.floor(tonumber(o.vol)))) end
@@ -792,7 +801,7 @@ return function(s, p)
           else m = (a.x == true or a.m == "x") and "x" or "w" end
           local f = type(a.f) == "string" and trim(lower(a.f)) or ""
           -- 2.0.2: the starting quest alerts use All words.
-          if (tonumber(saved.v) or 0) < 3 and m == "w" and BASE_BY_FLAG[f] == lower(trim(a.t)) then m = "l" end
+          if (tonumber(saved.v) or 0) < 3 and m == "w" and BASE_BY_FLAG[f] and BASE_BY_FLAG[f][lower(trim(a.t))] then m = "l" end
           st.alerts[#st.alerts + 1] = {t = string.sub(trim(a.t), 1, TEXT_MAX), m = m, f = f ~= "" and f or nil, off = a.off == true or nil}
           -- 1.0.x "Show only in" a window: that window becomes the alert window.
           if WIN_N[a.w or ""] and not st.opt.win and not a.off then st.opt.win = a.w end
@@ -846,6 +855,19 @@ return function(s, p)
   -- Quest rows within the client's work limit; the rest wait for the next update.
   while qhead <= #qpend and workavailable() do quest_line(qpend[qhead], unix); qpend[qhead] = nil; qhead = qhead + 1 end
   if qhead > #qpend then qpend, qhead = {}, 1 end
+
+  -- Read quest list at login: once, 10 s after the saved list is loaded, unless
+  -- quest rows came in during the last minute (KT_Tracker reads it too).
+  if ql.loaded and not login_done then
+    login_at = login_at or unix
+    if unix - login_at >= 10 then
+      login_done = true
+      if opt("login_read") and not (ql.last_line_at and unix - ql.last_line_at < 60) and unix - myq_sent_at >= 60 then
+        myq_sent_at, myq_hide_until = unix, unix + 60
+        request({service = "chat", operation = "send", text = "@myquests"})
+      end
+    end
+  end
 
   -- Save the quest list once a read has finished (no new row for 5 s).
   if ql.changed and ql.file and ql.loaded and ql.last_line_at and unix - ql.last_line_at >= 5 then

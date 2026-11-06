@@ -4,7 +4,7 @@
   "id": "chat_filters",
   "name": "Chat Filters",
   "short_name": "CF",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Hides chat lines by category and alerts you when chat contains text you choose.",
   "presentation": {"title": "Chat Filters", "icon": "cf.png", "controls": "none", "settings": false, "status": true},
   "update_interval": 0.5,
