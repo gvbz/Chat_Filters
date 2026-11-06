@@ -146,7 +146,7 @@ for k, tip in pairs(TIPS) do ITEM[k].tip = tip end
 -- Conquest custom quests (Oracle of Dereth customquests.csv, by Advis).
 local BASE = {
   {n = "darsh down", f = "assaultonaimaru", h = "Shoushi - Portal to Fort 33.6S 74.9E - Kill Darshmaul the Brutal 34.3S 80.7E - Loot Finger - Shoushi - Give to Vovran 33.4S 72.8E"},
-  {n = "FO down", f = "ghostdencompleted", h = "Desolution Beach - Helsing 82.5N 43.5W - Den of Ghosts 82.4N 41.3W - Head North and hug left. Don't go downstairs - Defeat The Forgotten One and Loot Head - Back to Helsing"},
+  {n = "Forgotten One Down", f = "ghostdencompleted", h = "Desolution Beach - Helsing 82.5N 43.5W - Den of Ghosts 82.4N 41.3W - Head North and hug left. Don't go downstairs - Defeat The Forgotten One and Loot Head - Back to Helsing"},
   {n = "Ice Giants", f = "icegiantkilltask", h = "ENL 3+ Abandoned Mines - /tell Subway \"ice\" and take portal - Speak to Bjorn Sjostrom 95.0N 57.0W"},
   {n = "Tenebrous Subversion", f = "shadowqueensspike", h = "ENL 8+ 14 players max. Flag: Zhaikhal - Zahar 13.4N 0.5E - Tou-Tou 28.2S 96.0E - Kill Teneberous Shadows loot Tenebrous Synaptic Core Matrix - Give to Zahar. Repeat: Timaru - Astral Projection 51.2N 76.1W"},
   {n = "Thorsten Tears", f = "cragstonetearspickup", h = "ENL 2+ 14 players max. Abandoned Mines - Bottom before big jump - Buy Cragstone Farms Portal Gem 20.1N 43.6E - Thomas the Squire 19.1N 46.3E - Cragstone - Alter to Cragstone 26.0N 48.4E - The Knight's Hold 34.6N 41.6E"},
