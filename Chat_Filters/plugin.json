@@ -1,0 +1,16 @@
+{
+  "api": 2,
+  "mode": "companion",
+  "id": "chat_filters",
+  "name": "Chat Filters",
+  "short_name": "CF",
+  "version": "2.0.5",
+  "description": "Hides chat lines by category and alerts you when chat contains text you choose.",
+  "presentation": {"title": "Chat Filters", "icon": "cf.png", "controls": "none", "settings": false, "status": true},
+  "update_interval": 0.5,
+  "chat_history": false,
+  "chat_subscriptions": [{"id": "q", "contains": " solves (", "sender_type": "server"}],
+  "snapshot_fields": ["chat_events", "character_name"],
+  "permissions": ["chat", "chat_filter", "say", "ui", "state", "profiles", "sound"],
+  "settings": []
+}
